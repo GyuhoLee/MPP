@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="457dp"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/flower" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:background="#e0ffffff">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userPw"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="로그인"
+            android:textSize="26dp" />
+
+        <EditText
+            android:id="@+id/userPw"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/userId"
+            android:layout_toRightOf="@+id/textPw"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/userId"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/textId"
+            android:fontFamily="sans-serif-condensed-medium" />
+
+        <TextView
+            android:id="@+id/textId"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="ID"
+            android:textSize="26dp" />
+
+        <TextView
+            android:id="@+id/textPw"
+            android:layout_width="58dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textId"
+            android:layout_marginTop="0dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="PW"
+            android:textSize="26dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="top|center_horizontal"
+        android:src="@drawable/khu"
+        android:layout_marginTop="100dp"/>
+
+
+</FrameLayout>

@@ -25,11 +25,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login);
+        setTitle("KHU 학점 알리미");
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        //recyclerView = (RecyclerView) findViewById(R.id.recycler);
         //AsyncTask 작동시킴(파싱)
-        new Description().execute();
+        //new Description().execute();
     }
 
     private class Description extends AsyncTask<Void, Void, Void> {
