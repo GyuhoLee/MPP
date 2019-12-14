@@ -8,6 +8,8 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,12 +28,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        setTitle("KHU 학점 알리미");
 
-        //recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        //AsyncTask 작동시킴(파싱)
-        //new Description().execute();
+        final Button button = (Button)findViewById(R.id.loginButton);
+        button.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                setContentView(R.layout.activity_main);
+                recyclerView = (RecyclerView) findViewById(R.id.recycler);
+                //AsyncTask 작동시킴(파싱)
+                new Description().execute();
+            }
+        });
     }
+
+
 
     private class Description extends AsyncTask<Void, Void, Void> {
 

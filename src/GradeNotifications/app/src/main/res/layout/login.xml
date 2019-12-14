@@ -73,5 +73,12 @@
         android:src="@drawable/khu"
         android:layout_marginTop="100dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="5dp"
+        android:text="Developed by GyuhoLee in HACKER."/>
+
 
 </FrameLayout>
