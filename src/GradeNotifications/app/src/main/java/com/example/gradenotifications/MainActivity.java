@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.jsoup.Connection;
@@ -28,8 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<ItemObject> list = new ArrayList();
-    private TextView userId;
-    private TextView userPw;
+    private EditText userId;
+    private EditText userPw;
+    private String sUserId = "";
+    private String sUserPw = "";
+    private TextView testText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
         final Button button = (Button)findViewById(R.id.loginButton);
-        userId = (TextView)findViewById(R.id.userId);
-        userPw = (TextView)findViewById(R.id.userPw);
+        userId = (EditText) findViewById(R.id.userId);
+        userPw = (EditText) findViewById(R.id.userPw);
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
+                sUserId = "" + userId.getText();
+                sUserPw = "" + userPw.getText();
                 setContentView(R.layout.activity_main);
                 recyclerView = (RecyclerView) findViewById(R.id.recycler);
                 //AsyncTask 작동시킴(파싱)
@@ -72,43 +78,37 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try {
-                Connection.Response loginPageResponse = Jsoup.connect("https://info21.khu.ac.kr/com/LoginCtr/login.do?sso=ok")
-                        .timeout(3000)
-                        .header("Origin", "https://portal.khu.ac.kr")
-                        .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3")
-                        .header("Content-Type", "application/x-www-form-urlencoded")
-                        .method(Connection.Method.GET)
-                        .execute();
-
-                // 로그인 페이지에서 얻은 쿠키
-                Map<String, String> loginTryCookie = loginPageResponse.cookies();
-
-                // 로그인 페이지에서 로그인에 함께 전송하는 토큰 얻어내기
-                Document loginPageDocument = loginPageResponse.parse();
-
-                String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36";
-                Map<String, String> data = new HashMap<>();
-                data.put("userId", "" + userId.getText());
-                data.put("userPw", "" + userPw.getText());
-               // data.put("idSaveCheck", "1");
-
-                Connection.Response response = Jsoup.connect("https://info21.khu.ac.kr/com/LoginCtr/login.do?sso=ok")
-                        .userAgent(userAgent)
-                        .timeout(3000)
-                        .header("Origin", "https://portal.khu.ac.kr")
-                        .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3")
-                        .header("Content-Type", "application/x-www-form-urlencoded")
-                        .cookies(loginTryCookie)
-                        .data(data)
+                /*
+                Connection.Response res = Jsoup.connect("https://klas.khu.ac.kr/index.jsp?sso=ok")
+                        .data("USER_ID",sUserId,
+                                "PASSWORD", sUserPw)
+                        //.cookie("PHPSESSID", sessionID)
+                        .timeout(15000)
                         .method(Connection.Method.POST)
                         .execute();
 
-                Map<String, String> loginCookie = response.cookies();
+                Document docs = res.parse();
+                Log.d("테스트용", "" + docs.body());
+
+                Map<String, String> loginCookie = res.cookies();
 
                 Document doc = Jsoup.connect("https://portal.khu.ac.kr/haksa/clss/scre/allScre/index.do")
                         .cookies(loginCookie)
                         .get();
-                
+                 */
+                Connection.Response res = Jsoup.connect("http://35.201.234.66/view.html")
+                        .execute();
+                Document doc = res.parse();
+                Log.d("이거이거이거이거이거", "" + doc.body());
+                Elements mElementDataSize = doc.select("div#grade div.subject"); //필요한 녀석만 꼬집어서 지정
+                int mElementSize = mElementDataSize.size(); //목록이 몇개인지 알아낸다. 그만큼 루프를 돌려야 하나깐.
+                Log.d("몇개냐 ", Integer.toString(mElementSize));
+                for (Element elem : mElementDataSize) {
+                    Elements fElem = elem.select("div");
+                    String my_title = fElem.first().text().split(" ")[0];
+                    String my_release = fElem.last().text();
+                    list.add(new ItemObject(my_title, my_release));
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
