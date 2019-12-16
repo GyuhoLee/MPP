@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="time">
+        <item>10분</item>
+        <item>20분</item>
+        <item>30분</item>
+        <item>1시간</item>
+        <item>2시간</item>
+    </string-array>
+    <string-array name="time_value">
+        <item>10m</item>
+        <item>20m</item>
+        <item>30m</item>
+        <item>60m</item>
+        <item>120m</item>
+    </string-array>
+</resources>

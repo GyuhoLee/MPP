@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
     private ArrayList<ItemObject> list = new ArrayList();
@@ -44,14 +46,18 @@ public class MainActivity extends AppCompatActivity {
         userId = (EditText) findViewById(R.id.userId);
         userPw = (EditText) findViewById(R.id.userPw);
         button.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(v.getContext(), SecondActivity.class);
+                startActivity(intent);
+                /*
                 sUserId = "" + userId.getText();
                 sUserPw = "" + userPw.getText();
                 setContentView(R.layout.activity_main);
                 recyclerView = (RecyclerView) findViewById(R.id.recycler);
                 //AsyncTask 작동시킴(파싱)
                 new Description().execute();
+                */
             }
         });
     }

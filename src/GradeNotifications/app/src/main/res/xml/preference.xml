@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="경희대 학점 알리미">
+    <PreferenceCategory
+        android:title="학점 조회">
+    <Preference
+        android:key="nowGrade"
+        android:summary="현재 수강중인 강의의 학점을 보여줍니다."
+        android:title="금학기 학점 조회" />
+
+    <ListPreference
+        android:key="lastGrade"
+        android:title="지난 학기 학점 조회"
+        android:summary="지난 학기의 학점을 보여줍니다." />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="changeGrade"
+            android:summary="학점을 4.5 기준으로 변환합니다.(기존 4.3)"
+            android:title="학점 변환" />
+    </PreferenceCategory>
+
+        <PreferenceCategory
+            android:title="알림 설정">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="useUpdateNofiti"
+        android:summary="학점이 변경되면 알림을 수신합니다."
+        android:title="알림 사용" />
+
+    <ListPreference
+        android:dependency="useUpdateNofiti"
+        android:title="업데이트 설정"
+        android:summary="사이트를 몇 분 주기로 갱신할 지 선택합니다."
+        android:key="language"
+        android:defaultValue="30m"
+        android:entries="@array/time"
+        android:entryValues="@array/time_value"/>
+        </PreferenceCategory>
+            <PreferenceCategory
+                android:title="어플 정보">
+    <Preference
+        android:title="개발자 정보"
+        android:summary="개발자 홈페이지와 연결되어 있습니다.">
+        <intent android:action="android.intent.action.VIEW"
+            android:data="https://GyuhoLee.com"/>
+    </Preference>
+        <Preference
+            android:summary="개발자에게 메일을 보냅니다"
+            android:title="메일 보내기" >
+            <intent
+                android:action="android.intent.action.SENDTO"
+                android:data="mailto:2015104194@khu.ac.kr" />
+        </Preference>
+            </PreferenceCategory>
+
+</PreferenceScreen>
