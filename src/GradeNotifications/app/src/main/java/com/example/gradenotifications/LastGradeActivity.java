@@ -1,16 +1,22 @@
 package com.example.gradenotifications;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -36,8 +42,9 @@ public class LastGradeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        sp = getPreferences(0);
-        semester = sp.getString("lastGrade", "2015_1");
+        sp = getSharedPreferences("sFile",MODE_PRIVATE);
+
+        semester = sp.getString("semester", "");
 
         userId = (EditText) findViewById(R.id.userId);
         userPw = (EditText) findViewById(R.id.userPw);
@@ -48,6 +55,17 @@ public class LastGradeActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         //AsyncTask 작동시킴(파싱)
         new Description().execute();
+        TextView textView = (TextView) findViewById(R.id.semesterText);
+        String[] semesters = semester.split("_");
+        textView.setText(semesters[0] + "년 " + semesters[1] + "학기 성적 조회");
+        final ImageButton button = (ImageButton) findViewById(R.id.backButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(v.getContext(), SecondActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private class Description extends AsyncTask<Void, Void, Void> {
 

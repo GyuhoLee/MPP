@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="경희대 학점 알리미">
+    <PreferenceScreen
+        android:icon="@drawable/khu"
+        android:title="학점 알리미"
+        android:selectable="false"
+        />
     <PreferenceCategory
         android:title="학점 조회">
     <Preference

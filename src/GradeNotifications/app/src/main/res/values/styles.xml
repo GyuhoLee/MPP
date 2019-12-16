@@ -6,4 +6,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">true</item>
+    </style>
+
 </resources>
