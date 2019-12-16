@@ -11,7 +11,9 @@
     <ListPreference
         android:key="lastGrade"
         android:title="지난 학기 학점 조회"
-        android:summary="지난 학기의 학점을 보여줍니다." />
+        android:summary="지난 학기의 학점을 보여줍니다."
+        android:entries="@array/grade"
+        android:entryValues="@array/grade_value"/>
         <SwitchPreference
             android:defaultValue="false"
             android:key="changeGrade"
@@ -31,7 +33,7 @@
         android:dependency="useUpdateNofiti"
         android:title="업데이트 설정"
         android:summary="사이트를 몇 분 주기로 갱신할 지 선택합니다."
-        android:key="language"
+        android:key="updateTime"
         android:defaultValue="30m"
         android:entries="@array/time"
         android:entryValues="@array/time_value"/>

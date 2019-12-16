@@ -14,4 +14,17 @@
         <item>60m</item>
         <item>120m</item>
     </string-array>
+
+    <string-array name="grade">
+        <item>2015년 1학기</item>
+        <item>2018년 1학기</item>
+        <item>2018년 2학기</item>
+        <item>2019년 1학기</item>
+    </string-array>
+    <string-array name="grade_value">
+        <item>2015_1</item>
+        <item>2018_1</item>
+        <item>2018_2</item>
+        <item>2019_1</item>
+    </string-array>
 </resources>
