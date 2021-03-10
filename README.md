@@ -4,15 +4,19 @@
 ## Preview
 
 로그인 화면
+
 ![로그인 화면](https://user-images.githubusercontent.com/12527673/110601229-0f981700-81c8-11eb-84d0-2bee3a7ed80c.png)
 
 메인 화면
+
 ![메인](https://user-images.githubusercontent.com/12527673/110601290-22125080-81c8-11eb-967b-cde4ac99f9cc.png)
 
 성적 선택 페이지
+
 ![성적 선택](https://user-images.githubusercontent.com/12527673/110601390-38201100-81c8-11eb-8963-8defdf335dd5.png)
 
 조회 화면
+
 ![조회](https://user-images.githubusercontent.com/12527673/110601479-52f28580-81c8-11eb-99ab-b91934231eaf.png)
 
 
