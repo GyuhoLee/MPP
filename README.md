@@ -20,7 +20,7 @@
 ![조회](https://user-images.githubusercontent.com/12527673/110601479-52f28580-81c8-11eb-99ab-b91934231eaf.png)
 
 
-알림
+알림<br>
 ![알림](https://user-images.githubusercontent.com/12527673/110601786-ab298780-81c8-11eb-96f1-497cb602de25.png)
 
 ## Installation
